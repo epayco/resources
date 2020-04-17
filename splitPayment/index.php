@@ -1,8 +1,8 @@
 <?php
 
 $p_id_invoice=time();
-$p_cust_id_cliente='ID_COMERCIO_PRINCIPAL';
-$p_key='P_KEY_COMERCIO_PRINCIPAL';
+$p_cust_id_cliente='ID_ALIADO_O_VENDEDOR';//Id del comercio propietario de la aplicación
+$p_key='P_ALIADO_O_VENDEDOR';//p_key del comercio propietario de la aplicación
 $p_amount='100000';
 $p_tax="0";
 $p_base="0";
@@ -12,9 +12,9 @@ $p_description = 'Descripción de lo que se esta cobrando';
 $p_signature= md5($p_cust_id_cliente.'^'.$p_key.'^'.$p_id_invoice.'^'.$p_amount.'^'.$p_currency_code);
 
 $p_split_type='01';
-$p_split_merchant_receiver='ID_COMERCIO_QUE_ASUME_LA_COMISION_DE_EPAYCO';
-$p_split_primary_receiver='ID_EPAYCO_PRIMER_RECIBIDOR';
-$p_split_primary_receiver_fee='15';
+$p_split_merchant_receiver='ID_ALIADO_O_VENDEDOR';//Id Comercio dueño del producto o servicio
+$p_split_primary_receiver='ID_MARKETPLACE_O_APLICACION';//Id del cliente recibidor primario (App, Maketplace, Tienda, etc)
+$p_split_primary_receiver_fee='%_MARKETPLACE_O_APLICACION';//Comisión del recibidor primario (App,Maketplace,Tienda,etc)
 $p_split_receivers=array();
 //$p_signature_receivers Y $p_split_receivers SOLO ES NECESARIO SI SON MÁS DE UN RECIBIDOR 
 $p_signature_receivers="";
