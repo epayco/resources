@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ePayco Checkout Vue Js V2.x</title>
+</head>
+<body>
+<div id="app">
+    <p>{{ message }}</p>
+    <form id="ePaycoForm"></form>
+  <button v-on:click="openCheckout">Open ePayco Checkout</button>
+</div>
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="https://checkout.epayco.co/checkout.js"></script>
+<script type="text/javascript">
+var handler = ePayco.checkout.configure({
+  key: '491d6a0b6e992cf924edd8d3d088aff1',
+  test: false
+})
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'ePayco Checkout Vue Js Example',
+    epayco_data: {
+          //Parametros compra (obligatorio)
+          name: "Vestido Mujer Primavera",
+          description: "Vestido Mujer Primavera",
+          invoice: "OC-" + Date.now(),
+          currency: "cop",
+          amount: "10000",
+          tax_base: "0",
+          tax: "0",
+          country: "co",
+          lang: "en",
+
+          //Onpage="false" - Standard="true"
+          external: "true",
+          force_response: true,
+
+
+          //Atributos opcionales
+          extra1: "extra1",
+          extra2: "extra2",
+          extra3: "extra3",
+          confirmation: "https://midominio/respuesta.html",
+          response: "https://midominio/confirmacion.php",
+
+          //Atributos cliente
+          name_billing: "Andres Perez",
+          address_billing: "Carrera 19 numero 14 91",
+          type_doc_billing: "cc",
+          mobilephone_billing: "3050000000",
+          number_doc_billing: "100000000"
+
+         //atributo deshabilitación metodo de pago
+    }
+  },
+  methods: {
+    openCheckout: function () {
+      this.epayco_data.name = 'Payment Test vue js'
+      this.epayco_data.description = 'Payment Test vue js'
+      this.epayco_data.methodsDisable = ["SP","CASH","DP"]
+      handler.open(this.epayco_data)
+    }
+  },
+  mounted() {
+    this.epayco_data.external = 'false'
+    let ePaycoForm = document.getElementById('ePaycoForm')
+    let ePaycoScript = document.createElement('script')
+    ePaycoScript.setAttribute('src', 'https://checkout.epayco.co/checkout.js')
+    ePaycoScript.setAttribute('class','epayco-button')
+    ePaycoScript.setAttribute('data-epayco-key','491d6a0b6e992cf924edd8d3d088aff1')
+    ePaycoScript.setAttribute('data-epayco-amount',this.epayco_data.amount)
+    ePaycoScript.setAttribute('data-epayco-name',this.epayco_data.name)
+    ePaycoScript.setAttribute('data-epayco-description',this.epayco_data.description)
+    ePaycoScript.setAttribute('data-epayco-invoice',this.epayco_data.invoice)
+    ePaycoScript.setAttribute('data-epayco-currency','cop')
+    ePaycoScript.setAttribute('data-epayco-country','co')
+    ePaycoScript.setAttribute('data-epayco-test','false')
+    ePaycoScript.setAttribute('data-epayco-external',this.epayco_data.external)
+    ePaycoScript.setAttribute('data-epayco-response','https://ejemplo.com/respuesta.html')
+    ePaycoScript.setAttribute('data-epayco-confirmation','https://ejemplo.com/confirmacion')
+    ePaycoForm.appendChild(ePaycoScript);
+    },
+})
+</script>
+</body>
+</html>
