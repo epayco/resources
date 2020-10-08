@@ -43,6 +43,7 @@ $p_signature_split=md5($p_split_type.'^'.$p_split_merchant_receiver.'^'.$p_split
     <input name="p_amount_base" id="p_amount_base" type="hidden" value="0">
     <input name="p_test_request" type="hidden" value="true">
     <input name="p_url_response" type="hidden" value="">
+    <input name="p_url_confirmation" type="hidden" value="">
     <input name="p_signature" type="hidden" id="signature"  value="<?php echo $p_signature ?>" />
     <input name="p_split_type" type="hidden" value="<?php echo $p_split_type ?>">
     <input name="p_split_merchant_receiver" type="hidden" value="<?php echo $p_split_merchant_receiver ?>">
