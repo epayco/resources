@@ -21,7 +21,7 @@ $signature = hash('sha256', $p_cust_id_cliente . '^' . $p_key . '^' . $x_ref_pay
 
 // obtener invoice y valor en el sistema del comercio
 $numOrder = '2531'; // Este valor es un ejemplo se debe reemplazar con el número de orden que tiene registrado en su sistema
-$valueOrder = 10000;  // Este valor es un ejemplo se debe reemplazar con el valor esperado de acuerdo al número de orden del sistema del comercio
+$valueOrder = '10000';  // Este valor es un ejemplo se debe reemplazar con el valor esperado de acuerdo al número de orden del sistema del comercio
 
 $x_response     = $_REQUEST['x_response'];
 $x_motivo       = $_REQUEST['x_response_reason_text'];
@@ -52,8 +52,8 @@ if ($x_signature == $signature) {
             break;
         }
     } else {
-        die("Firma no valida");
+        die("Firma no válida");
     }
 } else {
-    die("numero de orden o valor pagado no coinsiden");
+    die("número de orden o valor pagado no coinciden");
 }
