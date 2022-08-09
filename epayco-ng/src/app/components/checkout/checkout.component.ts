@@ -36,7 +36,6 @@ export class CheckoutComponent implements OnInit {
     
     this.handler.onCloseModal = this.onCloseEpaycoModal
     this.handler.open(data)
-    console.log(data)
   } 
 
   onCloseEpaycoModal(){
