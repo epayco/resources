@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutComponent implements OnInit {
   window: any = window;
-	handler = this.window.ePayco.checkout.configure({ key: 'c84ad754c728bfb10af2c1c3d1594106', test: true });
+	handler = this.window.ePayco.checkout.configure({ key: 'xxxxxxxxxxxxxxxxxx', test: true });
   constructor() { }
 
   ngOnInit(): void {
