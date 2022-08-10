@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EpaycoService {
-  configUrl = 'https://secure.epayco.io/validation/v1/reference/';
+  configUrl = environment.baseUrl;
   constructor(
     private http: HttpClient
   ) { }

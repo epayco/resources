@@ -8,20 +8,24 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
   styleUrls: ['./response.component.css']
 })
 export class ResponseComponent implements OnInit {
+
   refPayco: string = '';
-	transactionResponse:any;
+  transactionResponse: any;
+
   constructor(
     private epaycoService: EpaycoService,
     private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+
     this.activatedRoute.queryParams.subscribe(params => {
       this.refPayco= params['ref_payco'] || params['x_ref_payco'];
     });
+
     this.epaycoService.getTransactionResponse(this.refPayco)
-    .subscribe((data: any) =>{
-        this.transactionResponse = data.data
+      .subscribe((data: any) =>{
+          this.transactionResponse = data.data
     });
   }
 

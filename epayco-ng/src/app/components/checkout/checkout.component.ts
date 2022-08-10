@@ -16,7 +16,7 @@ export class CheckoutComponent implements OnInit {
   epayco(){
     var data={ 
       //Parametros compra (obligatorio) 
-      //invoice: "1234",
+      invoice: "1234",
       currency: "cop",
       name: "Plan de facturacion electronica",
       description: "Plan de facturacion electronica",
