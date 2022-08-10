@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  checkoutUrl:'https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js',
   baseUrl: 'https://secure.epayco.io/validation/v1/reference/'
 };
 

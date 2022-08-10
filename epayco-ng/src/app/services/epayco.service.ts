@@ -6,7 +6,10 @@ import { environment } from "src/environments/environment";
   providedIn: 'root'
 })
 export class EpaycoService {
+
   configUrl = environment.baseUrl;
+  checkoutUrl = environment.checkoutUrl;
+
   constructor(
     private http: HttpClient
   ) { }

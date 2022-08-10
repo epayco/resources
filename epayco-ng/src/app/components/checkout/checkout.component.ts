@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { EpaycoService } from "src/app/services/epayco.service";
 
 @Component({
   selector: 'app-checkout',
@@ -6,14 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-  window: any = window;
-	handler = this.window.ePayco.checkout.configure({ key: 'xxxxxxxxxxxxxxxxxx', test: true });
-  constructor() { }
+
+  public window:any;
+  public checkoutUrl;
+
+  constructor(
+    private _renderer2: Renderer2, 
+    private epaycoService: EpaycoService,
+    @Inject(DOCUMENT) private _document: Document
+  ) { 
+    this.checkoutUrl = this.epaycoService.checkoutUrl;
+  }
 
   ngOnInit(): void {
+    let script = this._renderer2.createElement('script');
+      script.src = this.checkoutUrl;
+      this._renderer2.appendChild(this._document.body, script);
+      this.window = window;
   }
   
   epayco(){
+    let handler = this.window.ePayco.checkout.configure({ key: 'xxxxxxxxxxxxxxxxxxxxxxx', test: true });
     var data={ 
       //Parametros compra (obligatorio) 
       invoice: "1234",
@@ -33,12 +48,10 @@ export class CheckoutComponent implements OnInit {
       response: "http://localhost:4200/response",
       confirmation: "http://localhost:4200/confirmation",
     } 
-    
-    this.handler.onCloseModal = this.onCloseEpaycoModal
-    this.handler.open(data)
+    handler.open(data)
+    handler.onClosed(function(response:any) {
+      alert('Close ePayco Modal!')
+    });
   } 
 
-  onCloseEpaycoModal(){
-    alert('Close ePayco Modal!')
-  }
 }
