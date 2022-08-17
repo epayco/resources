@@ -1,0 +1,61 @@
+<header id="main-header" style="margin-top:20px" style="text-align: center;">
+    <div class="row">
+      <div class="col-lg-12 franja">
+        <img class="center-block" src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/epayco/logo1.png" style="">
+      </div>
+      <a routerLink="/" routerLinkActive="active-link">Go checkout</a>
+    </div>
+  </header>
+  <div class="container" style="text-align: -webkit-center;">
+    <div class="row" style="margin-top:20px">
+      <div class="col-lg-8 col-lg-offset-2 ">
+        <h4 style="text-align:center"> Respuesta de la Transacción </h4>
+        <hr>
+      </div>
+      <div class="col-lg-8 col-lg-offset-2 ">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody *ngIf="transactionResponse">
+              <tr>
+                <td>Referencia</td>
+                <td id="referencia" > {{transactionResponse.x_id_invoice}}</td>
+              </tr>
+              <tr>
+                <td class="bold">Fecha</td>
+                <td id="fecha" class=""> {{transactionResponse.x_transaction_date}}</td>
+              </tr>
+              <tr>
+                <td>Respuesta</td>
+                <td id="respuesta"> {{transactionResponse.x_transaction_state}}</td>
+              </tr>
+              <tr>
+                <td>Motivo</td>
+                <td id="motivo"> {{transactionResponse.x_response_reason_text}}</td>
+              </tr>
+              <tr>
+                <td class="bold">Banco</td>
+                <td class="" id="banco"> {{transactionResponse.x_bank_name}}</td>
+              </tr>
+              <tr>
+                <td class="bold">Recibo</td>
+                <td id="recibo"> {{transactionResponse.x_transaction_id}}</td>
+              </tr>
+              <tr>
+                <td class="bold">Total</td>
+                <td class="" id="total"> {{transactionResponse.x_amount}} {{transactionResponse.x_currency_code}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer style="text-align: center;">
+    <div class="row">
+      <div class="container">
+        <div class="col-lg-8 col-lg-offset-2">
+          <img src="https://multimedia.epayco.co/epayco-landing/btns/pagos_procesados_por_epayco_370px_.png"> <img src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/epayco/credibancologo.png" height="40px" >
+        </div>
+      </div>
+    </div>
+  </footer>
