@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-//require('dotenv').config()
+import '../App.css';
 
 
 export default class Checkout extends Component {
@@ -10,7 +10,6 @@ export default class Checkout extends Component {
         script.async = true;
     
         document.body.appendChild(script);
-        console.log(process.env)
     }
     openchekout = e =>{
         e.preventDefault();
@@ -47,11 +46,14 @@ export default class Checkout extends Component {
     render(){
         return(
             <React.Fragment> 
-                <input
-                type="submit"
-                placeholder="pagar"
-                onClick={this.openchekout}
-                /> 
+                <div className="loader-container">
+                    <div className="loading"></div>
+                </div>
+                <p style={{textAlign:"center"}} className="epayco-title">
+                    <button id="btn_epayco" href="#" onClick={this.openchekout}>
+                        <img className="btn-epayco"    src="https://multimedia.epayco.co/epayco-landing/btns/Boton-epayco-color1.png" alt="botón epayco" />
+                    </button>
+                </p> 
             </React.Fragment>
         )
     } 

@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  epayco-react:
+    container_name: epayco-react
+    restart: on-failure:5
+    build: .
+    ports:
+      - "3000:80"
+    volumes:
+      - ./:/usr/src/app
