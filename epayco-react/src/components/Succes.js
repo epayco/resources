@@ -1,8 +1,11 @@
-import React from 'react';
-import Checkout from './checkout';
+import React, {Component} from 'react';
+import Checkout from './Checkout';
 
-const Succes = ({}) => (
-     <Checkout />
-);
 
-export default Succes;
+export default class Succes extends Component {
+     render(){
+          return(
+               <Checkout />
+          );
+     }
+}
